@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Texas Class A CDL Permit Prep - Jeff's Study Companion</title>
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="High-end Texas Class A CDL Permit Prep PWA for Jeff. Pass your Texas DPS exam with zero cost grants!">
+    
+    <!-- PWA Web Manifest (Dynamic Data URI) -->
+    <link rel="manifest" id="manifest-placeholder">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        txblue: '#002868',
+                        txred: '#BF0A30',
+                        txgold: '#F59E0B',
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                            950: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome & Canvas Confetti -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* Modern Glassmorphism & Custom Touches */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+        }
+        
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(241,245,249,0.7));
+            backdrop-filter: blur(8px);
+        }
+        .dark .glass-card {
+            background: linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.85));
+        }
+
+        /* 3D Flip Card Effect */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.4); border-radius: 9999px; }
+        
+        /* Hide scrollbar for tab navigation */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300">
+
+    <!-- Top App Bar -->
+    <header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-md mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <!-- Brand Badge -->
+            <div class="flex items-center space-x-3">
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-txblue via-blue-700 to-txred p-0.5 shadow-md flex items-center justify-center">
+                        <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
+                            <i class="fa-solid fa-truck-monster text-amber-400 text-lg"></i>
+                        </div>
+                    </div>
+                    <span class="absolute -bottom-1 -right-1 flex h-3.5 w-3.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white dark:border-slate-900"></span>
+                    </span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <h1 class="font-extrabold text-base tracking-tight text-slate-900 dark:text-white leading-none">Texas CDL Class A</h1>
+                        <span class="bg-txred/10 dark:bg-txred/20 text-txred dark:text-red-400 border border-txred/20 text-[10px] font-black px-1.5 py-0.5 rounded uppercase">DPS</span>
+                    </div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Welcome, <span class="font-bold text-blue-600 dark:text-blue-400">Jeff</span>!</p>
+                </div>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center space-x-2">
+                <!-- Streak Badge -->
+                <div class="flex items-center gap-1 bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-full text-xs font-bold shadow-sm">
+                    <i class="fa-solid fa-fire text-amber-500 animate-pulse"></i>
+                    <span id="header-streak">1</span>d
+                </div>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="w-8 h-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-700 dark:text-amber-300 flex items-center justify-center hover:scale-105 active:scale-95 transition" title="Toggle Light/Dark Theme">
+                    <i id="theme-icon" class="fa-solid fa-sun text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto w-full flex-1 px-4 py-4 pb-24">
+
+        <!-- VIEW 1: DASHBOARD -->
+        <section id="view-dashboard" class="space-y-4">
+            
+            <!-- Hero Study Card for Jeff -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-txblue via-blue-900 to-slate-900 text-white p-5 shadow-xl border border-blue-800/50">
+                <div class="absolute -right-8 -bottom-8 opacity-10 text-white">
+                    <i class="fa-solid fa-road-barrier text-9xl"></i>
+                </div>
+                
+                <div class="relative z-10 space-y-3">
+                    <div class="flex justify-between items-start">
+                        <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            <i class="fa-solid fa-check-circle mr-1"></i> WIOA Grant Ready
+                        </span>
+                        <span id="dash-mastery-badge" class="text-xs font-bold text-blue-200">0% Mastery</span>
+                    </div>
+
+                    <div>
+                        <h2 class="text-xl font-extrabold tracking-tight">Zero-Cost Permit Pathway</h2>
+                        <p class="text-xs text-blue-200/90 mt-1 leading-relaxed">
+                            Targeting Austin Capital Area WIOA & SNAP E&T grants. Complete all 4 modules below to pass the DPS written exam!
+                        </p>
+                    </div>
+
+                    <!-- Overall Progress Bar -->
+                    <div class="space-y-1 pt-1">
+                        <div class="flex justify-between text-[11px] font-semibold text-blue-200">
+                            <span>Permit Readiness Score</span>
+                            <span id="dash-score-text">0 / 27 Questions</span>
+                        </div>
+                        <div class="w-full bg-blue-950 rounded-full h-2 overflow-hidden border border-blue-700/40">
+                            <div id="dash-progress-bar" class="bg-gradient-to-r from-amber-400 to-emerald-400 h-full w-0 transition-all duration-500"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-2">
+                        <button onclick="startQuiz('dps')" class="flex-1 bg-txred hover:bg-red-700 text-white font-bold py-2.5 rounded-xl text-xs shadow-lg transition flex items-center justify-center gap-1.5 active:scale-95">
+                            <i class="fa-solid fa-play"></i> Launch Full Simulator
+                        </button>
+                        <button onclick="switchTab('airbrakes')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-3 py-2.5 rounded-xl text-xs backdrop-blur-md border border-white/20 transition flex items-center gap-1 active:scale-95">
+                            <i class="fa-solid fa-gauge"></i> Air Leak Simulator
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Category Selection Cards -->
+            <div class="space-y-3">
+                <div class="flex justify-between items-center px-1">
+                    <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-blue-600 dark:text-blue-400"></i> Texas DPS Written Modules
+                    </h3>
+                    <span class="text-[11px] text-slate-500">4 Core Exams</span>
+                </div>
+
+                <div class="grid grid-cols-1 gap-2.5">
+                    
+                    <!-- General Knowledge -->
+                    <div onclick="startQuiz('general')" class="glass-panel rounded-2xl p-4 shadow-sm hover:shadow-md transition border border-slate-200 dark:border-slate-800 cursor-pointer flex items-center justify-between group">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">General Knowledge</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Rules of road, inspection, safety</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span id="score-tag-general" class="text-xs font-bold text-slate-400">0%</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-400 ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+
+                    <!-- Combination Vehicles -->
+                    <div onclick="startQuiz('combinations')" class="glass-panel rounded-2xl p-4 shadow-sm hover:shadow-md transition border border-slate-200 dark:border-slate-800 cursor-pointer flex items-center justify-between group">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition">
+                                <i class="fa-solid fa-link"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">Combination Vehicles</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Coupling, glad hands, off-tracking</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span id="score-tag-combinations" class="text-xs font-bold text-slate-400">0%</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-400 ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+
+                    <!-- Air Brakes -->
+                    <div onclick="startQuiz('brakes')" class="glass-panel rounded-2xl p-4 shadow-sm hover:shadow-md transition border border-slate-200 dark:border-slate-800 cursor-pointer flex items-center justify-between group">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition">
+                                <i class="fa-solid fa-gauge-high"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">Air Brake Systems</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Dual systems, leak rates, pop-out</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span id="score-tag-brakes" class="text-xs font-bold text-slate-400">0%</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-400 ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+
+                    <!-- Texas Special Requirements -->
+                    <div onclick="startQuiz('texas')" class="glass-panel rounded-2xl p-4 shadow-sm hover:shadow-md transition border border-slate-200 dark:border-slate-800 cursor-pointer flex items-center justify-between group">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-txred/10 text-txred dark:text-red-400 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-txred dark:group-hover:text-red-400 transition">Texas Special Rules</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">TX Section 14: Length/width, flares</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span id="score-tag-texas" class="text-xs font-bold text-slate-400">0%</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-400 ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Quick Texas Essential Specs Card -->
+            <div class="glass-panel rounded-2xl p-4 space-y-2.5 border border-slate-200 dark:border-slate-800">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+                    <i class="fa-solid fa-key"></i> Key Numbers for Texas DPS Exam
+                </h4>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-slate-200/50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-300/40 dark:border-slate-800">
+                        <span class="text-slate-500 dark:text-slate-400 block text-[10px]">Max Width</span>
+                        <strong class="text-slate-900 dark:text-white font-extrabold text-sm">102 Inches (8.5 ft)</strong>
+                    </div>
+                    <div class="bg-slate-200/50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-300/40 dark:border-slate-800">
+                        <span class="text-slate-500 dark:text-slate-400 block text-[10px]">Max Height</span>
+                        <strong class="text-slate-900 dark:text-white font-extrabold text-sm">14 Feet</strong>
+                    </div>
+                    <div class="bg-slate-200/50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-300/40 dark:border-slate-800">
+                        <span class="text-slate-500 dark:text-slate-400 block text-[10px]">Steer Tread Depth</span>
+                        <strong class="text-slate-900 dark:text-white font-extrabold text-sm">4/32 Inch Min</strong>
+                    </div>
+                    <div class="bg-slate-200/50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-300/40 dark:border-slate-800">
+                        <span class="text-slate-500 dark:text-slate-400 block text-[10px]">Other Tread Depth</span>
+                        <strong class="text-slate-900 dark:text-white font-extrabold text-sm">2/32 Inch Min</strong>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- VIEW 2: ACTIVE QUIZ ENGINE -->
+        <section id="view-quiz-engine" class="hidden space-y-4">
+            
+            <!-- Quiz Engine Header -->
+            <div class="glass-panel p-3.5 rounded-2xl flex justify-between items-center border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div>
+                    <span id="quiz-cat-label" class="text-[10px] font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">General Knowledge</span>
+                    <h3 id="quiz-question-counter" class="text-sm font-extrabold text-slate-900 dark:text-white leading-tight">Question 1 of 5</h3>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <!-- Text to Speech Button -->
+                    <button onclick="readAloudQuestion()" class="w-8 h-8 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center hover:bg-blue-500/20 transition" title="Read Question Aloud">
+                        <i id="tts-icon" class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                    <!-- Exit Button -->
+                    <button onclick="switchTab('dashboard')" class="text-xs bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-700 dark:text-slate-300 font-bold px-3 py-1.5 rounded-xl transition">
+                        <i class="fa-solid fa-xmark mr-1"></i> Exit
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Progress Bar -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div id="quiz-engine-progress" class="bg-gradient-to-r from-blue-600 to-indigo-500 h-full w-0 transition-all duration-300"></div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="glass-card rounded-3xl p-5 shadow-lg border border-slate-200 dark:border-slate-800 space-y-4">
+                <h4 id="quiz-question-text" class="text-base md:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                    Question loading...
+                </h4>
+
+                <div id="quiz-options-wrapper" class="space-y-2.5 pt-1">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Explanation Box -->
+                <div id="quiz-explanation-panel" class="hidden p-4 rounded-2xl bg-blue-50/80 dark:bg-slate-800/80 border border-blue-200 dark:border-slate-700 text-xs space-y-1.5 animate-fadeIn">
+                    <div class="flex items-center gap-1.5 font-bold text-blue-900 dark:text-blue-300">
+                        <i class="fa-solid fa-circle-info"></i> Texas DPS Rule Explanation:
+                    </div>
+                    <p id="quiz-explanation-text" class="text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <!-- Action Button -->
+                <div class="flex justify-end pt-2">
+                    <button id="quiz-next-btn" onclick="nextQuizQuestion()" disabled class="w-full bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 font-bold py-3 rounded-2xl text-xs transition flex items-center justify-center gap-2 cursor-not-allowed">
+                        Next Question <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- VIEW 3: AIR BRAKE LEAK TEST SIMULATOR -->
+        <section id="view-airbrakes" class="hidden space-y-4">
+            
+            <div class="glass-panel p-5 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-amber-500">Interactive Simulator</span>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Texas 3-Step Air Leak Test</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                        Failing this test is an automatic failure on the Texas DPS Skills Exam!
+                    </p>
+                </div>
+
+                <!-- Interactive Visual Air Pressure Gauge -->
+                <div class="bg-slate-900 rounded-2xl p-5 text-white shadow-inner flex flex-col items-center justify-center space-y-3 relative overflow-hidden border border-slate-800">
+                    <div class="flex justify-between w-full text-xs text-slate-400 font-semibold px-2">
+                        <span>Supply Tank</span>
+                        <span id="gauge-status-text" class="text-emerald-400 font-bold">NORMAL (125 PSI)</span>
+                    </div>
+
+                    <!-- Pressure Gauge Display -->
+                    <div class="relative w-36 h-36 rounded-full border-4 border-slate-700 bg-slate-950 flex items-center justify-center shadow-2xl">
+                        <!-- Gauge Needle -->
+                        <div id="gauge-needle" class="absolute w-1 h-14 bg-txred origin-bottom rounded-full transition-transform duration-500 shadow-md" style="transform: rotate(45deg); bottom: 50%;"></div>
+                        <div class="w-4 h-4 bg-white rounded-full z-10 border-2 border-slate-900"></div>
+                        <div class="absolute bottom-6 text-center">
+                            <span id="gauge-psi-value" class="text-2xl font-black text-white leading-none">125</span>
+                            <span class="text-[9px] text-slate-400 block font-bold">PSI</span>
+                        </div>
+                    </div>
+
+                    <!-- Alarm Warning Light Indicator -->
+                    <div id="gauge-alarm" class="hidden bg-red-600/20 border border-red-500 text-red-400 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 animate-pulse">
+                        <i class="fa-solid fa-triangle-exclamation"></i> LOW AIR WARNING (< 55 PSI)
+                    </div>
+                </div>
+
+                <!-- 3 Interactive Test Steps -->
+                <div class="space-y-2.5">
+                    
+                    <!-- Step 1 -->
+                    <div id="step-card-1" class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 space-y-2 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[11px] font-bold text-blue-600 dark:text-blue-400">Step 1: Applied Pressure Leakage</span>
+                            <button onclick="runAirStep(1)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-lg transition active:scale-95">Test Step 1</button>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">
+                            Shut engine off, turn key ON, press & hold foot brake pedal for 1 minute.
+                        </p>
+                        <div class="text-[11px] text-amber-600 dark:text-amber-400 font-bold">
+                            Must NOT lose more than 4 PSI in 1 minute (Combination Vehicle)!
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="step-card-2" class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 space-y-2 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[11px] font-bold text-blue-600 dark:text-blue-400">Step 2: Low Air Warning Signal</span>
+                            <button onclick="runAirStep(2)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-lg transition active:scale-95">Test Step 2</button>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">
+                            Fan the brake pedal repeatedly to bleed down air tank pressure.
+                        </p>
+                        <div class="text-[11px] text-amber-600 dark:text-amber-400 font-bold">
+                            Warning light & buzzer MUST turn on at or before 55 PSI!
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="step-card-3" class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 space-y-2 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[11px] font-bold text-blue-600 dark:text-blue-400">Step 3: Spring Brake Pop-Out</span>
+                            <button onclick="runAirStep(3)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-lg transition active:scale-95">Test Step 3</button>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">
+                            Continue pumping brake pedal down further to drain air.
+                        </p>
+                        <div class="text-[11px] text-amber-600 dark:text-amber-400 font-bold">
+                            Yellow parking valve button MUST pop out between 20 & 45 PSI!
+                        </div>
+                    </div>
+
+                </div>
+
+                <button onclick="resetAirGauge()" class="w-full py-2.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-700 dark:text-slate-300 font-bold rounded-xl text-xs transition">
+                    <i class="fa-solid fa-rotate-left mr-1"></i> Reset Gauge to 125 PSI
+                </button>
+            </div>
+
+        </section>
+
+        <!-- VIEW 4: FLASHCARDS -->
+        <section id="view-flashcards" class="hidden space-y-4">
+            
+            <div class="glass-panel p-5 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm text-center">
+                
+                <div class="flex justify-between items-center text-xs font-bold text-slate-500 dark:text-slate-400">
+                    <span id="fc-counter">Card 1 of 6</span>
+                    <button onclick="readAloudFlashcard()" class="text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-volume-high"></i> Listen
+                    </button>
+                </div>
+
+                <!-- 3D Flip Flashcard -->
+                <div class="perspective-1000 w-full h-64 cursor-pointer" onclick="flipFlashcard()">
+                    <div id="fc-card-inner" class="transform-style-3d w-full h-full duration-500 relative rounded-2xl shadow-xl">
+                        
+                        <!-- Front -->
+                        <div class="backface-hidden absolute inset-0 bg-gradient-to-br from-txblue to-blue-950 text-white rounded-2xl p-6 flex flex-col justify-center items-center border border-blue-800/60 space-y-3">
+                            <span class="bg-white/20 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">Texas Spec</span>
+                            <h4 id="fc-front-text" class="text-base md:text-lg font-bold leading-snug">Card Question...</h4>
+                            <span class="text-xs text-blue-200 opacity-80 pt-2"><i class="fa-solid fa-rotate mr-1"></i> Tap to flip answer</span>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="rotate-y-180 backface-hidden absolute inset-0 bg-slate-900 text-amber-300 rounded-2xl p-6 flex flex-col justify-center items-center border border-slate-700 space-y-2">
+                            <h4 id="fc-back-text" class="text-lg md:text-xl font-black">Card Answer...</h4>
+                            <p id="fc-sub-text" class="text-xs text-slate-300 mt-1"></p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Card Nav Actions -->
+                <div class="flex gap-2 pt-2">
+                    <button onclick="prevFlashcard()" class="flex-1 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 font-bold text-xs rounded-xl transition">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Previous
+                    </button>
+                    <button onclick="markCardMastered()" class="px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow transition" title="Mark as Mastered">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button onclick="nextFlashcard()" class="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow transition">
+                        Next <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- VIEW 5: WIOA / EBT GRANT CHECKLIST FOR JEFF -->
+        <section id="view-checklist" class="hidden space-y-4">
+            
+            <div class="glass-panel p-5 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+                <div>
+                    <span class="bg-txred/10 text-txred dark:text-red-400 border border-txred/20 text-[10px] font-black px-2 py-0.5 rounded uppercase">Austin, TX Guide</span>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white mt-1">Jeff's Free CDL Roadmap</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Step-by-step checklist to get 100% tuition coverage via Workforce Solutions Capital Area.
+                    </p>
+                </div>
+
+                <div class="space-y-2 text-xs">
+                    
+                    <label class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 cursor-pointer">
+                        <input type="checkbox" onchange="saveChecklist()" class="chk-item mt-0.5 rounded text-blue-600 focus:ring-blue-500 w-4 h-4">
+                        <div>
+                            <strong class="text-slate-900 dark:text-white block font-bold">1. Gather SNAP / EBT & ID Proof</strong>
+                            <span class="text-slate-500 dark:text-slate-400">Texas DL, Social Security card, SNAP benefit letter proving $0 income priority.</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 cursor-pointer">
+                        <input type="checkbox" onchange="saveChecklist()" class="chk-item mt-0.5 rounded text-blue-600 focus:ring-blue-500 w-4 h-4">
+                        <div>
+                            <strong class="text-slate-900 dark:text-white block font-bold">2. Contact WFS Capital Area Career Center</strong>
+                            <span class="text-slate-500 dark:text-slate-400">Visit North Center (9001 N IH-35) or East Center (3401 Webberville Rd) to request WIOA / SNAP E&T CDL voucher.</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 cursor-pointer">
+                        <input type="checkbox" onchange="saveChecklist()" class="chk-item mt-0.5 rounded text-blue-600 focus:ring-blue-500 w-4 h-4">
+                        <div>
+                            <strong class="text-slate-900 dark:text-white block font-bold">3. Complete DOT Physical & Drug Screen</strong>
+                            <span class="text-slate-500 dark:text-slate-400">Get 2-year Medical Examiner's Certificate (Form MCSA-5876). Grant covers fee!</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 cursor-pointer">
+                        <input type="checkbox" onchange="saveChecklist()" class="chk-item mt-0.5 rounded text-blue-600 focus:ring-blue-500 w-4 h-4">
+                        <div>
+                            <strong class="text-slate-900 dark:text-white block font-bold">4. Pass Texas DPS Written Exams</strong>
+                            <span class="text-slate-500 dark:text-slate-400">Use this app to pass General Knowledge, Combinations, Air Brakes & TX Special Rules to receive CLP (Commercial Learner Permit).</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 cursor-pointer">
+                        <input type="checkbox" onchange="saveChecklist()" class="chk-item mt-0.5 rounded text-blue-600 focus:ring-blue-500 w-4 h-4">
+                        <div>
+                            <strong class="text-slate-900 dark:text-white block font-bold">5. Enroll at Approved Driving School</strong>
+                            <span class="text-slate-500 dark:text-slate-400">Start 160-hour ELDT behind-the-wheel training at Ancora/ACC or SCI Austin with 100% grant voucher.</span>
+                        </div>
+                    </label>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Floating Dock Navigation Bar -->
+    <nav class="fixed bottom-3 left-4 right-4 max-w-md mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-1.5 shadow-2xl z-50">
+        <div class="flex justify-around items-center">
+            
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="flex flex-col items-center py-1.5 px-3 rounded-xl text-blue-600 dark:text-blue-400 font-bold transition">
+                <i class="fa-solid fa-chart-pie text-base"></i>
+                <span class="text-[10px] mt-0.5">Home</span>
+            </button>
+
+            <button onclick="switchTab('airbrakes')" id="nav-airbrakes" class="flex flex-col items-center py-1.5 px-3 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-bold transition">
+                <i class="fa-solid fa-gauge-high text-base"></i>
+                <span class="text-[10px] mt-0.5">Air Brakes</span>
+            </button>
+
+            <button onclick="switchTab('flashcards')" id="nav-flashcards" class="flex flex-col items-center py-1.5 px-3 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-bold transition">
+                <i class="fa-solid fa-clone text-base"></i>
+                <span class="text-[10px] mt-0.5">Cards</span>
+            </button>
+
+            <button onclick="switchTab('checklist')" id="nav-checklist" class="flex flex-col items-center py-1.5 px-3 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-bold transition">
+                <i class="fa-solid fa-clipboard-check text-base"></i>
+                <span class="text-[10px] mt-0.5">WIOA Guide</span>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- JavaScript Application Code -->
+    <script>
+        /* ----------------------------------------------------
+           1. COMPREHENSIVE TEXAS CDL QUESTION BANK
+        ---------------------------------------------------- */
+        const QUESTION_BANK = {
+            general: [
+                {
+                    q: "What is the minimum tread depth required for FRONT steering axle tires on a commercial vehicle in Texas?",
+                    options: ["2/32 inch", "4/32 inch", "6/32 inch", "1/32 inch"],
+                    correct: 1,
+                    exp: "Texas DPS handbook requires at least 4/32 inch tread depth on front steer tires. All other tires require at least 2/32 inch."
+                },
+                {
+                    q: "What emergency warning equipment is required in every commercial motor vehicle in Texas?",
+                    options: [
+                        "3 red reflective triangles, spare fuses, and a charged fire extinguisher",
+                        "2 warning flares and tow straps",
+                        "5 red flags and tire chains",
+                        "First aid kit and jumper cables"
+                    ],
+                    correct: 0,
+                    exp: "Commercial motor vehicles must carry 3 red reflective triangles, spare electrical fuses, and a properly rated, charged fire extinguisher."
+                },
+                {
+                    q: "When stopped on a 2-lane, 2-way road, where should your emergency reflective triangles be placed?",
+                    options: [
+                        "10 feet rear, 100 feet rear, and 100 feet front",
+                        "10 feet rear, 100 feet rear, and 200 feet rear",
+                        "50 feet rear, 100 feet rear, and 150 feet rear",
+                        "25 feet front, 50 feet rear, and 75 feet rear"
+                    ],
+                    correct: 0,
+                    exp: "On a two-way traffic road, place triangles 10 feet behind, 100 feet behind, and 100 feet in front of the vehicle toward oncoming traffic."
+                },
+                {
+                    q: "When should engine retarders (Jake Brakes) be turned OFF?",
+                    options: [
+                        "When driving on wet, icy, or snow-covered roads",
+                        "When going down steep mountain grades",
+                        "When pulling heavy freight loads",
+                        "At speeds above 55 mph"
+                    ],
+                    correct: 0,
+                    exp: "Retarders can cause drive wheels to lose traction and skid on slippery, wet, or icy roads. Turn them off when traction is reduced!"
+                },
+                {
+                    q: "How often must you stop and inspect your cargo securement on a long-distance trip?",
+                    options: [
+                        "Within the first 50 miles, then every 3 hours or 150 miles",
+                        "Every 500 miles or 8 hours",
+                        "Only at fuel stops",
+                        "At the end of every trip"
+                    ],
+                    correct: 0,
+                    exp: "Check cargo within the first 50 miles of starting out, then re-check every 3 hours or 150 miles (whichever comes first)."
+                }
+            ],
+            combinations: [
+                {
+                    q: "When connecting the glad hands air lines between tractor and trailer, what are the standard colors?",
+                    options: [
+                        "BLUE for Service line, RED for Emergency line",
+                        "RED for Service line, BLUE for Emergency line",
+                        "YELLOW for Service line, GREEN for Emergency line",
+                        "BLACK for Service line, RED for Emergency line"
+                    ],
+                    correct: 0,
+                    exp: "Service line is color-coded BLUE (foot pedal controlled air). Emergency line is color-coded RED (supplies trailer air tanks & emergency spring brakes)."
+                },
+                {
+                    q: "What prevents the rollover of a tractor-trailer combination vehicle?",
+                    options: [
+                        "Keeping cargo as low and centered as possible while taking curves slowly",
+                        "Keeping cargo high near the roof",
+                        "Locking trailer brakes when entering turns",
+                        "Steering sharply in turns to balance the trailer"
+                    ],
+                    correct: 0,
+                    exp: "Combination vehicles suffer from the 'crack-the-whip' effect. Keep cargo low/centered and slow down before entering turns."
+                },
+                {
+                    q: "What should you verify when inspecting the fifth wheel coupling?",
+                    options: [
+                        "Fifth wheel locking jaws are fully closed around the kingpin shank with no space between upper coupler and fifth wheel",
+                        "There is 1 inch space between upper coupler and fifth wheel",
+                        "The release lever is in the open position",
+                        "The kingpin is lubricated with water"
+                    ],
+                    correct: 0,
+                    exp: "Locking jaws must be completely closed around the shank of the kingpin, and there must be NO gap between fifth wheel and trailer apron plate."
+                },
+                {
+                    q: "What is 'off-tracking' in a combination vehicle?",
+                    options: [
+                        "Rear wheels of the trailer follow a tighter path than the front wheels in a turn",
+                        "Front wheels swing out wide",
+                        "Trailer sways side to side on straight roads",
+                        "Air pressure drops in trailer air lines"
+                    ],
+                    correct: 0,
+                    exp: "Off-tracking (or cheating) occurs because the trailer's rear wheels follow a shorter path inside the radius of the turn than the tractor's front wheels."
+                }
+            ],
+            brakes: [
+                {
+                    q: "At what pressure MUST the low air pressure warning signal activate on an air brake equipped truck?",
+                    options: [
+                        "Before pressure drops below 55 PSI",
+                        "At 100 PSI",
+                        "At 20 PSI exact",
+                        "When governor cuts out at 120 PSI"
+                    ],
+                    correct: 0,
+                    exp: "Texas DPS regulations require the low air warning light or buzzer to turn on before air pressure falls below 55 PSI (usually triggers around 60 PSI)."
+                },
+                {
+                    q: "What happens when air pressure drops down to between 20 PSI and 45 PSI in an air brake system?",
+                    options: [
+                        "The emergency spring brakes engage and the parking brake valve pops out",
+                        "The air compressor turns on automatically",
+                        "Service brake pedal pressure doubles",
+                        "The engine automatically turns off"
+                    ],
+                    correct: 0,
+                    exp: "When pressure drops to between 20 and 45 PSI, the tractor protection valve / yellow parking brake knob pops OUT, applying emergency spring brakes."
+                },
+                {
+                    q: "For a combination vehicle with air brakes, what is the maximum allowable air leak rate during the 1-minute applied pressure test?",
+                    options: ["4 PSI in 1 minute", "3 PSI in 1 minute", "2 PSI in 1 minute", "6 PSI in 1 minute"],
+                    correct: 0,
+                    exp: "With the foot brake pedal fully applied for 1 minute, pressure loss should not exceed 4 PSI per minute for combination vehicles."
+                },
+                {
+                    q: "At what air pressure does the air compressor governor cut-out?",
+                    options: ["Around 120 to 140 PSI", "Around 80 to 90 PSI", "Around 150 to 180 PSI", "Around 50 to 60 PSI"],
+                    correct: 0,
+                    exp: "The air governor stops the compressor from pumping air into tanks when pressure reaches cut-out level (around 120-130 PSI)."
+                }
+            ],
+            texas: [
+                {
+                    q: "Under Section 14 of the Texas CDL Handbook, what is the maximum legal width of any vehicle on Texas public roads?",
+                    options: ["102 inches (8 ½ feet)", "96 inches (8 feet)", "108 inches (9 feet)", "120 inches (10 feet)"],
+                    correct: 0,
+                    exp: "The maximum width for commercial motor vehicles in Texas is 102 inches (8.5 feet). Mirrors and safety devices are excluded."
+                },
+                {
+                    q: "What is the maximum legal height for a vehicle and cargo in the State of Texas without a permit?",
+                    options: ["14 feet", "13 feet 6 inches", "15 feet", "12 feet 6 inches"],
+                    correct: 0,
+                    exp: "Texas state law restricts maximum height to 14 feet unless an oversize transport permit is granted by TxDOT."
+                },
+                {
+                    q: "What symbol must be displayed on any slow-moving vehicle traveling 25 mph or less in Texas?",
+                    options: [
+                        "A reflective triangular orange/red slow-moving vehicle emblem",
+                        "A yellow flashing beacon only",
+                        "A red square flag on the roof",
+                        "No symbol is needed during daylight hours"
+                    ],
+                    correct: 0,
+                    exp: "Slow-moving vehicles designed for 25 mph or less must display a triangular slow-moving vehicle (SMV) emblem mounted on the rear."
+                },
+                {
+                    q: "When must commercial motor vehicles display clearance lamps and side marker lamps in Texas?",
+                    options: [
+                        "From 30 minutes after sunset to 30 minutes before sunrise, and when visibility is under 1,000 feet",
+                        "Only between midnight and 6 AM",
+                        "Only on interstate highways",
+                        "24 hours a day continuously"
+                    ],
+                    correct: 0,
+                    exp: "Clearance and side marker lights must be lit from 30 minutes after sunset to 30 minutes before sunrise, or whenever visibility is poor."
+                }
+            ]
+        };
+
+        const FLASHCARDS = [
+            { front: "What is the maximum vehicle width in Texas?", back: "102 Inches (8.5 Feet)", sub: "Excludes side mirrors and safety gear." },
+            { front: "What is the maximum vehicle height in Texas?", back: "14 Feet", sub: "Watch for low bridges and overpasses!" },
+            { front: "Front Steering Axle Tread Depth Min?", back: "4/32 Inch Minimum", sub: "Cannot be re-capped or re-grooved." },
+            { front: "Drive & Trailer Axle Tread Depth Min?", back: "2/32 Inch Minimum", sub: "Measured in major tread grooves." },
+            { front: "Low Air Warning Buzzer Trigger?", back: "Before dropping below 55 PSI", sub: "Usually triggers between 55-75 PSI." },
+            { front: "Emergency Spring Brake Pop-out Range?", back: "Between 20 PSI and 45 PSI", sub: "Yellow parking knob pops out." }
+        ];
+
+        /* ----------------------------------------------------
+           2. APP STATE & PERSISTENCE
+        ---------------------------------------------------- */
+        let state = {
+            theme: 'dark',
+            streak: 1,
+            lastStudyDate: null,
+            scores: { general: 0, combinations: 0, brakes: 0, texas: 0 },
+            checklist: [],
+            activeQuiz: null,
+            qIndex: 0,
+            score: 0,
+            selectedOpt: null,
+            fcIndex: 0
+        };
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            setupPwaManifest();
+            updateDashboardUI();
+            updateAirGauge(125);
+            loadFlashcardUI();
+        });
+
+        function loadUserData() {
+            const saved = localStorage.getItem('jeff_cdl_prep_v2');
+            if (saved) {
+                try { state = { ...state, ...JSON.parse(saved) }; } catch(e){}
+            }
+            // Update Streak
+            const today = new Date().toDateString();
+            if (state.lastStudyDate !== today) {
+                if (state.lastStudyDate) {
+                    const diff = Math.floor((new Date() - new Date(state.lastStudyDate)) / (1000 * 60 * 60 * 24));
+                    if (diff === 1) state.streak += 1;
+                    else if (diff > 1) state.streak = 1;
+                }
+                state.lastStudyDate = today;
+                saveUserData();
+            }
+
+            // Restore theme
+            if (state.theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').className = "fa-solid fa-moon text-sm text-slate-700";
+            }
+            
+            // Restore checklist items
+            const chkBoxes = document.querySelectorAll('.chk-item');
+            chkBoxes.forEach((cb, idx) => {
+                if (state.checklist.includes(idx)) cb.checked = true;
+            });
+        }
+
+        function saveUserData() {
+            localStorage.setItem('jeff_cdl_prep_v2', JSON.stringify({
+                theme: state.theme,
+                streak: state.streak,
+                lastStudyDate: state.lastStudyDate,
+                scores: state.scores,
+                checklist: state.checklist
+            }));
+            updateDashboardUI();
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            state.theme = isDark ? 'dark' : 'light';
+            document.getElementById('theme-icon').className = isDark ? "fa-solid fa-sun text-sm text-amber-300" : "fa-solid fa-moon text-sm text-slate-700";
+            saveUserData();
+        }
+
+        function updateDashboardUI() {
+            document.getElementById('header-streak').textContent = state.streak;
+            
+            // Update quiz category score tags
+            Object.keys(state.scores).forEach(key => {
+                const tag = document.getElementById(`score-tag-${key}`);
+                if (tag) {
+                    const val = state.scores[key] || 0;
+                    tag.textContent = `${val}%`;
+                    if (val >= 80) tag.className = "text-xs font-bold text-emerald-500";
+                }
+            });
+
+            // Calculate overall mastery
+            const scoreValues = Object.values(state.scores);
+            const totalPassed = scoreValues.filter(s => s >= 80).length;
+            const avg = Math.round(scoreValues.reduce((a,b) => a+b, 0) / 4);
+
+            document.getElementById('dash-mastery-badge').textContent = `${avg}% Mastery`;
+            document.getElementById('dash-score-text').textContent = `${totalPassed} of 4 Passed`;
+            document.getElementById('dash-progress-bar').style.width = `${avg}%`;
+        }
+
+        /* ----------------------------------------------------
+           3. NAVIGATION
+        ---------------------------------------------------- */
+        function switchTab(tabId) {
+            const views = ['dashboard', 'quiz-engine', 'airbrakes', 'flashcards', 'checklist'];
+            views.forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                if (el) el.classList.add('hidden');
+            });
+
+            const targetView = document.getElementById(`view-${tabId}`);
+            if (targetView) targetView.classList.remove('hidden');
+
+            // Reset bottom dock icons
+            const navIds = ['dashboard', 'airbrakes', 'flashcards', 'checklist'];
+            navIds.forEach(n => {
+                const navBtn = document.getElementById(`nav-${n}`);
+                if (navBtn) {
+                    navBtn.className = "flex flex-col items-center py-1.5 px-3 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-bold transition";
+                }
+            });
+
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if (activeNav) {
+                activeNav.className = "flex flex-col items-center py-1.5 px-3 rounded-xl text-blue-600 dark:text-blue-400 font-bold transition";
+            }
+        }
+
+        /* ----------------------------------------------------
+           4. QUIZ ENGINE LOGIC
+        ---------------------------------------------------- */
+        function startQuiz(catKey) {
+            let questions = [];
+            let catName = "General Knowledge";
+
+            if (catKey === 'dps') {
+                catName = "Texas DPS Simulator";
+                Object.values(QUESTION_BANK).forEach(arr => questions.push(...arr));
+                questions = questions.sort(() => 0.5 - Math.random());
+            } else {
+                questions = QUESTION_BANK[catKey] || QUESTION_BANK.general;
+                const names = { general: "General Knowledge", combinations: "Combination Vehicles", brakes: "Air Brake Systems", texas: "Texas Special Rules" };
+                catName = names[catKey] || catName;
+            }
+
+            state.activeQuiz = { catKey, catName, questions, total: questions.length };
+            state.qIndex = 0;
+            state.score = 0;
+
+            document.getElementById('quiz-cat-label').textContent = catName;
+            switchTab('quiz-engine');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const qData = state.activeQuiz.questions[state.qIndex];
+            state.selectedOpt = null;
+
+            document.getElementById('quiz-question-counter').textContent = `Question ${state.qIndex + 1} of ${state.activeQuiz.total}`;
+            const pct = Math.round(((state.qIndex) / state.activeQuiz.total) * 100);
+            document.getElementById('quiz-engine-progress').style.width = `${pct}%`;
+
+            document.getElementById('quiz-question-text').textContent = qData.q;
+
+            const wrapper = document.getElementById('quiz-options-wrapper');
+            wrapper.innerHTML = '';
+
+            qData.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `opt-btn-${idx}`;
+                btn.onclick = () => selectQuizOption(idx);
+                btn.className = "w-full text-left p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium text-xs transition flex items-center justify-between group";
+                btn.innerHTML = `
+                    <span class="flex items-center gap-3">
+                        <span class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-800 group-hover:bg-blue-600 group-hover:text-white font-bold text-[11px] flex items-center justify-center">${String.fromCharCode(65 + idx)}</span>
+                        <span class="text-slate-800 dark:text-slate-200">${optText}</span>
+                    </span>
+                    <i class="fa-regular fa-circle text-slate-400"></i>
+                `;
+                wrapper.appendChild(btn);
+            });
+
+            document.getElementById('quiz-explanation-panel').classList.add('hidden');
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.disabled = true;
+            nextBtn.className = "w-full bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 font-bold py-3 rounded-2xl text-xs transition flex items-center justify-center gap-2 cursor-not-allowed";
+        }
+
+        function selectQuizOption(optIdx) {
+            if (state.selectedOpt !== null) return;
+            state.selectedOpt = optIdx;
+
+            const qData = state.activeQuiz.questions[state.qIndex];
+            const isCorrect = (optIdx === qData.correct);
+
+            if (isCorrect) state.score++;
+
+            qData.options.forEach((_, idx) => {
+                const btn = document.getElementById(`opt-btn-${idx}`);
+                if (idx === qData.correct) {
+                    btn.className = "w-full text-left p-3.5 rounded-2xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 font-semibold text-xs text-emerald-900 dark:text-emerald-200 flex items-center justify-between";
+                } else if (idx === optIdx && !isCorrect) {
+                    btn.className = "w-full text-left p-3.5 rounded-2xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-950/40 font-semibold text-xs text-rose-900 dark:text-rose-200 flex items-center justify-between";
+                }
+            });
+
+            document.getElementById('quiz-explanation-text').textContent = qData.exp;
+            document.getElementById('quiz-explanation-panel').classList.remove('hidden');
+
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.disabled = false;
+            nextBtn.className = "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-2xl text-xs shadow-lg transition flex items-center justify-center gap-2 cursor-pointer active:scale-95";
+        }
+
+        function nextQuizQuestion() {
+            if (state.qIndex < state.activeQuiz.total - 1) {
+                state.qIndex++;
+                renderQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function finishQuiz() {
+            const pct = Math.round((state.score / state.activeQuiz.total) * 100);
+            
+            if (state.activeQuiz.catKey !== 'dps') {
+                const old = state.scores[state.activeQuiz.catKey] || 0;
+                if (pct > old) state.scores[state.activeQuiz.catKey] = pct;
+            }
+
+            saveUserData();
+
+            if (pct >= 80 && typeof confetti === 'function') {
+                confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+            }
+
+            const wrapper = document.getElementById('quiz-options-wrapper');
+            document.getElementById('quiz-question-text').textContent = `Exam Complete! Score: ${pct}%`;
+            
+            wrapper.innerHTML = `
+                <div class="text-center py-6 space-y-3">
+                    <div class="w-16 h-16 rounded-full mx-auto ${pct >= 80 ? 'bg-emerald-500/20 text-emerald-500' : 'bg-rose-500/20 text-rose-500'} flex items-center justify-center text-3xl">
+                        <i class="fa-solid ${pct >= 80 ? 'fa-award' : 'fa-triangle-exclamation'}"></i>
+                    </div>
+                    <h4 class="text-xl font-extrabold">${pct >= 80 ? 'PASSED!' : 'STUDY AGAIN'}</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Jeff answered ${state.score} of ${state.activeQuiz.total} correctly.</p>
+                    <div class="pt-3 flex gap-2">
+                        <button onclick="startQuiz('${state.activeQuiz.catKey}')" class="flex-1 py-2.5 bg-blue-600 text-white font-bold text-xs rounded-xl shadow">Retake</button>
+                        <button onclick="switchTab('dashboard')" class="flex-1 py-2.5 bg-slate-200 dark:bg-slate-800 font-bold text-xs rounded-xl">Dashboard</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('quiz-explanation-panel').classList.add('hidden');
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+        }
+
+        function readAloudQuestion() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const qText = state.activeQuiz.questions[state.qIndex].q;
+                const utterance = new SpeechSynthesisUtterance(qText);
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        /* ----------------------------------------------------
+           5. AIR LEAK SIMULATOR GAUGE LOGIC
+        ---------------------------------------------------- */
+        function updateAirGauge(psi) {
+            document.getElementById('gauge-psi-value').textContent = psi;
+            
+            // Map 0 - 150 PSI to angle rotation (-120 to +120 deg)
+            const angle = -120 + ((psi / 150) * 240);
+            document.getElementById('gauge-needle').style.transform = `rotate(${angle}deg)`;
+
+            const status = document.getElementById('gauge-status-text');
+            const alarm = document.getElementById('gauge-alarm');
+
+            if (psi <= 55) {
+                status.textContent = `CRITICAL LOW (${psi} PSI)`;
+                status.className = "text-red-400 font-bold animate-pulse";
+                alarm.classList.remove('hidden');
+            } else {
+                status.textContent = `NORMAL (${psi} PSI)`;
+                status.className = "text-emerald-400 font-bold";
+                alarm.classList.add('hidden');
+            }
+        }
+
+        function runAirStep(stepNum) {
+            if (stepNum === 1) {
+                updateAirGauge(121);
+                document.getElementById('step-card-1').className = "p-3.5 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 space-y-2 transition";
+            } else if (stepNum === 2) {
+                updateAirGauge(52);
+                document.getElementById('step-card-2').className = "p-3.5 rounded-2xl border-2 border-amber-500 bg-amber-500/10 space-y-2 transition";
+            } else if (stepNum === 3) {
+                updateAirGauge(28);
+                document.getElementById('step-card-3').className = "p-3.5 rounded-2xl border-2 border-red-500 bg-red-500/10 space-y-2 transition";
+            }
+        }
+
+        function resetAirGauge() {
+            updateAirGauge(125);
+            [1,2,3].forEach(n => {
+                document.getElementById(`step-card-${n}`).className = "p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 space-y-2 transition";
+            });
+        }
+
+        /* ----------------------------------------------------
+           6. FLASHCARD ENGINE
+        ---------------------------------------------------- */
+        function loadFlashcardUI() {
+            const fc = FLASHCARDS[state.fcIndex];
+            document.getElementById('fc-counter').textContent = `Card ${state.fcIndex + 1} of ${FLASHCARDS.length}`;
+            document.getElementById('fc-front-text').textContent = fc.front;
+            document.getElementById('fc-back-text').textContent = fc.back;
+            document.getElementById('fc-sub-text').textContent = fc.sub;
+            document.getElementById('fc-card-inner').classList.remove('rotate-y-180');
+        }
+
+        function flipFlashcard() {
+            document.getElementById('fc-card-inner').classList.toggle('rotate-y-180');
+        }
+
+        function nextFlashcard() {
+            state.fcIndex = (state.fcIndex + 1) % FLASHCARDS.length;
+            loadFlashcardUI();
+        }
+
+        function prevFlashcard() {
+            state.fcIndex = (state.fcIndex - 1 + FLASHCARDS.length) % FLASHCARDS.length;
+            loadFlashcardUI();
+        }
+
+        function markCardMastered() {
+            nextFlashcard();
+        }
+
+        function readAloudFlashcard() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const fc = FLASHCARDS[state.fcIndex];
+                const text = `${fc.front}. Answer: ${fc.back}`;
+                const utterance = new SpeechSynthesisUtterance(text);
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        /* ----------------------------------------------------
+           7. CHECKLIST PERSISTENCE
+        ---------------------------------------------------- */
+        function saveChecklist() {
+            const chkBoxes = document.querySelectorAll('.chk-item');
+            const checkedIdxs = [];
+            chkBoxes.forEach((cb, idx) => {
+                if (cb.checked) checkedIdxs.push(idx);
+            });
+            state.checklist = checkedIdxs;
+            saveUserData();
+        }
+
+        /* ----------------------------------------------------
+           8. PWA MANIFEST & SERVICE WORKER INJECTION
+        ---------------------------------------------------- */
+        function setupPwaManifest() {
+            const manifestObj = {
+                name: "Texas Class A CDL Prep - Jeff",
+                short_name: "TX CDL",
+                start_url: ".",
+                display: "standalone",
+                background_color: "#0f172a",
+                theme_color: "#0f172a",
+                icons: [{
+                    src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚛</text></svg>",
+                    sizes: "192x192 512x512",
+                    type: "image/svg+xml"
+                }]
+            };
+            const manifestStr = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifestObj));
+            document.getElementById('manifest-placeholder').setAttribute('href', manifestStr);
+
+            if ('serviceWorker' in navigator) {
+                const swCode = `
+                    const CACHE = 'tx-cdl-v2';
+                    self.addEventListener('install', e => {
+                        e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./'])));
+                    });
+                    self.addEventListener('fetch', e => {
+                        e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
+                    });
+                `;
+                const blob = new Blob([swCode], { type: 'text/javascript' });
+                navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+            }
+        }
+    </script>
+</body>
+</html>
